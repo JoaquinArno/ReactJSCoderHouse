@@ -1,10 +1,22 @@
 import React from "react";
+import ItemCount from "./ItemCount"
 
 const ItemListContainer = ({greeting}) =>{
 
-    return (
 
-    <h1 style={styles.saludo}>{greeting}</h1> 
+    const funcionOnAdd = () => {
+
+
+
+    }
+
+
+    return (
+    
+    <>
+        <h1 style={styles.saludo}>{greeting}</h1> 
+        <ItemCount initial ={1} stock={10} onAdd ={funcionOnAdd}/>
+    </>
 
     )
 }

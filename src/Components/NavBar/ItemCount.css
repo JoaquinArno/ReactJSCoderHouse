@@ -1,0 +1,32 @@
+.itemCountContainer {
+
+    padding-top: 20px;
+    padding-left: 50px;
+
+}
+
+.itemCount {
+
+    border: 1px solid grey;
+    width: 112px;
+    background-color: lightgray;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.botonContador  {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+.botonCarrito {
+
+    margin-top: 5px;
+    width: 112px;
+
+}
