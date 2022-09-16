@@ -1,21 +1,36 @@
 import React from "react";
 import ItemCount from "./ItemCount"
+import ItemList from "./ItemList"
+import { products } from "../../Assets/Products"
+import { useState, useEffect } from "react";
 
 const ItemListContainer = ({greeting}) =>{
 
+    const promesa = (products) => {
+        
+        return new Promise((resolve, reject) => {
 
-    const funcionOnAdd = () => {
+            setTimeout(() => {resolve(products)}, 2000)
 
-
-
+        })
     }
+
+    const [listProducts, setListProducts] = useState([])
+
+    useEffect ( () => {
+
+        promesa(products)
+         .then(res => setListProducts(res))
+
+    }, [])
 
 
     return (
     
     <>
         <h1 style={styles.saludo}>{greeting}</h1> 
-        <ItemCount initial ={1} stock={10} onAdd ={funcionOnAdd}/>
+        <ItemList listProducts={listProducts}/>
+        <ItemCount initial={1} stock={10} onAdd={() => {}}/>
     </>
 
     )
