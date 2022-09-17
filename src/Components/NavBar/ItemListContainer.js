@@ -3,6 +3,7 @@ import ItemCount from "./ItemCount"
 import ItemList from "./ItemList"
 import { products } from "../../Assets/Products"
 import { useState, useEffect } from "react";
+import Swal from 'sweetalert2'
 
 const ItemListContainer = ({greeting}) =>{
 
@@ -24,13 +25,24 @@ const ItemListContainer = ({greeting}) =>{
 
     }, [])
 
+    const onAdd = () => {
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado al carrito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
+
 
     return (
     
     <>
         <h1 style={styles.saludo}>{greeting}</h1> 
         <ItemList listProducts={listProducts}/>
-        <ItemCount initial={1} stock={10} onAdd={() => {}}/>
+        <ItemCount initial={1} stock={10} onAdd={onAdd}/>
     </>
 
     )
