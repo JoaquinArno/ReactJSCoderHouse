@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./Components/NavBar/NavBar"
 import ItemListContainer from "./Components/NavBar/ItemListContainer"
-
+import ItemDetailContainer from "./Components/NavBar/ItemDetailContainer"
 
 const App = () =>{
 
@@ -13,6 +13,8 @@ const App = () =>{
     <NavBar />
 
     <ItemListContainer greeting={bienvenida}/>
+    <ItemDetailContainer />
+
 
   </>
   )
