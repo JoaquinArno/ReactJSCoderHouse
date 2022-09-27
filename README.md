@@ -6,4 +6,4 @@
 
 ## Visual
 
-<img title="" src="file:///home/arnojoaquin/my-app/src/Assets/ReacApp.gif" alt="" width="643">
+<img title="" src="./src/Assets/ReactApp.gif" alt="" width="643">
