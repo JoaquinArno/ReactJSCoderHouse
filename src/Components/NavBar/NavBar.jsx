@@ -1,15 +1,16 @@
 import React from "react";
 import logo from "../../Assets/Logo.png"
 import "./NavBar.css"
-import CartWidget from "./CartWidget"
+import CartWidget from "../CartWidget/CartWidget"
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () =>{
 
-  const elementos = [
+  const categorias = [
     
-    { id:0, nombre:'Elemento1' },
-    { id:1, nombre:'Elemento2' },
-    { id:2, nombre:'Elemento3' }
+    { id:0, nombre:'Fantasía', ruta:'/categoria/Fantasía' },
+    { id:1, nombre:'Ciencia Ficción', ruta:'/categoria/Ciencia Ficción' },
+    { id:2, nombre:'Epopeya', ruta:'/categoria/Epopeya' }
 
   ]
 
@@ -17,19 +18,19 @@ const NavBar = () =>{
 
     <header>
 
-     <img src={logo} alt="logo"/>
-
+     <Link to={'/'}><img src={logo} alt="logo"/></Link>
+     
      <h1>Parsifal</h1>
 
      <nav>
         <ul>
           <li> 
-            {elementos.map((elemento) => {return <a key={elemento.id} href="">{elemento.nombre}</a>})}
+            {categorias.map((categoria) => {return <NavLink key={categoria.id} to={categoria.ruta}>{categoria.nombre}</NavLink>})}
           </li>
         </ul>
      </nav>
 
-     <CartWidget/>
+     <Link to={'/Carrito'}><CartWidget/></Link>
 
     </header>
   )

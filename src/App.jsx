@@ -1,7 +1,12 @@
 import React from "react";
-import NavBar from "./Components/NavBar/NavBar"
-import ItemListContainer from "./Components/NavBar/ItemListContainer"
-import ItemDetailContainer from "./Components/NavBar/ItemDetailContainer"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from "./Components/NavBar/NavBar";
+import ItemListContainer from "./Components/ItemList/ItemListContainer";
+import ItemDetailContainer from "./Components/ItemDetail/ItemDetailContainer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cart from "./Components/CartView/Cart";
+import { products } from "./Assets/Products";
+
 
 const App = () =>{
 
@@ -9,12 +14,20 @@ const App = () =>{
   
   return (
   <>
+    
+      <BrowserRouter>
 
-    <NavBar />
+        <NavBar product={ products }/>
 
-    <ItemListContainer greeting={bienvenida}/>
-    <ItemDetailContainer />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting={bienvenida} />} />
+          <Route path='/categoria/:idCategoria' element={<ItemListContainer greeting={bienvenida} />} />
+          <Route path='/producto/:idProducto' element={<ItemDetailContainer />} />
+          <Route path='/Carrito' element={<Cart />} />
+        </Routes>
 
+
+      </BrowserRouter>
 
   </>
   )
