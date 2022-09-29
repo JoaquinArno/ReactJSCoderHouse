@@ -9,7 +9,17 @@ const ItemDetailContainer = () => {
     
     const [product, setProduct] = useState({});
 
+    const [productList, setProductList] = useState([]);
+
     const { idProducto } = useParams();
+
+    const addProd = () => {
+        
+        setProductList([...productList, product]);
+
+    }
+    
+    
   
     useEffect(() => {
         customFetchDetail(products, 100, parseInt(idProducto)).then((res) => setProduct(res));
@@ -19,7 +29,7 @@ const ItemDetailContainer = () => {
 
         <>
 
-            <ItemDetail product={product} />
+            <ItemDetail product={product} addProd={addProd} productList={productList} />
  
         </>
     )

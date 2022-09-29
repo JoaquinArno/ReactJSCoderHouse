@@ -5,9 +5,11 @@ import Swal from 'sweetalert2'
 import { MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBCardImage, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 
-const ItemDetail = ({ product }) => {
+const ItemDetail = ({ product, addProd, productList }) => {
 
     const onAdd = () => {
+
+        addProd();
 
         Swal.fire({
             position: 'top-end',
@@ -15,7 +17,8 @@ const ItemDetail = ({ product }) => {
             title: 'Producto agregado al carrito',
             showConfirmButton: false,
             timer: 1500
-          })
+        })
+
     }
 
     return (
@@ -39,7 +42,7 @@ const ItemDetail = ({ product }) => {
                         <MDBCardText><span>${product.precio}</span></MDBCardText>
 
                         <ItemCount initial={1} stock={10} onAdd={onAdd}/>
-
+                                                   
                     </MDBCardBody>
                 </MDBCol>
             </MDBRow>
