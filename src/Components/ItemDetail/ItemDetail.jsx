@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ItemDetail.css"
 import ItemCount from "../ItemCount/ItemCount"
+import { CartContext } from "../Context/CartContext";
 import Swal from 'sweetalert2'
 import { MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBCardImage, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 
-const ItemDetail = ({ product, addProd, productList }) => {
+const ItemDetail = ({ product }) => {
 
-    const onAdd = () => {
+    const { addItem } = useContext(CartContext);
 
-        addProd();
+    const onAdd = (contador) => {
 
         Swal.fire({
             position: 'top-end',
@@ -18,6 +19,8 @@ const ItemDetail = ({ product, addProd, productList }) => {
             showConfirmButton: false,
             timer: 1500
         })
+
+        addItem(product,contador);
 
     }
 
@@ -41,7 +44,7 @@ const ItemDetail = ({ product, addProd, productList }) => {
 
                         <MDBCardText><span>${product.precio}</span></MDBCardText>
 
-                        <ItemCount initial={1} stock={10} onAdd={onAdd}/>
+                        <ItemCount initial={1} stock={product.stock} onAdd={onAdd}/>
                                                    
                     </MDBCardBody>
                 </MDBCol>

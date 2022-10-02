@@ -16,11 +16,11 @@ const ItemCount = ({ initial, stock, onAdd }) => {
   const restar = () => contador > initial && setContador(contador - 1);
 
 
-  const agregarCarrito = () => {
+  const agregarCarrito = (contador) => {
 
-    setClick(1)
+    setClick(contador)
     setContador(contador);
-    onAdd();
+    onAdd(contador);
 
   }
 
@@ -30,7 +30,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
     <> 
       
 
-      { click === 1 ? 
+      { click === contador ? 
 
         (<Link to={'/Carrito'}><Button variant="primary">Finalizar Compra</Button></Link>)
 
@@ -38,7 +38,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
           <Button variant="secondary" onClick={sumar}>+</Button>
           <Button variant="secondary">{contador}</Button>
           <Button variant="secondary" onClick={restar}>-</Button>
-          <Button variant="secondary" onClick={agregarCarrito}>Agregar al Carrito</Button>
+          <Button variant="secondary" onClick={() => agregarCarrito(contador)}>Agregar al Carrito</Button>
         </ButtonGroup>)
       
       }

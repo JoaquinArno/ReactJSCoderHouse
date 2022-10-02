@@ -6,6 +6,7 @@ import ItemDetailContainer from "./Components/ItemDetail/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Components/CartView/Cart";
 import { products } from "./Assets/Products";
+import CartProvider from "./Components/Context/CartContext";
 
 
 const App = () =>{
@@ -16,17 +17,15 @@ const App = () =>{
   <>
     
       <BrowserRouter>
-
-        <NavBar product={ products }/>
-
+      <CartProvider>
+      <NavBar product={ products }/>
         <Routes>
           <Route path='/' element={<ItemListContainer greeting={bienvenida} />} />
           <Route path='/categoria/:idCategoria' element={<ItemListContainer greeting={bienvenida} />} />
           <Route path='/producto/:idProducto' element={<ItemDetailContainer />} />
           <Route path='/Carrito' element={<Cart />} />
         </Routes>
-
-
+      </CartProvider>
       </BrowserRouter>
 
   </>

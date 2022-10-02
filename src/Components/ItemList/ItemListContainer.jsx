@@ -3,7 +3,7 @@ import ItemList from "./ItemList"
 import { products } from "../../Assets/Products"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import customFetchCategory from "../../Utils/customFetchCategory";
+import { customFetchCategory } from "../../Utils/customFetch";
 
 const ItemListContainer = ({greeting}) =>{
 
