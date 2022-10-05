@@ -1,16 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ItemDetail.css"
 import ItemCount from "../ItemCount/ItemCount"
 import { CartContext } from "../Context/CartContext";
 import Swal from 'sweetalert2'
 import { MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBCardImage, MDBRow, MDBCol } from 'mdb-react-ui-kit';
-
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 const ItemDetail = ({ product }) => {
 
     const { addItem } = useContext(CartContext);
 
+    const [click, setClick] = useState(0);
+
     const onAdd = (contador) => {
+
+        setClick(1)
 
         Swal.fire({
             position: 'top-end',
@@ -44,7 +49,11 @@ const ItemDetail = ({ product }) => {
 
                         <MDBCardText><span>${product.precio}</span></MDBCardText>
 
-                        <ItemCount initial={1} stock={product.stock} onAdd={onAdd}/>
+                        {click === 1 ? 
+
+                        (<Link to={'/Carrito'}><Button variant="primary">Finalizar Compra</Button></Link>)
+
+                        : (<ItemCount initial={1} stock={product.stock} onAdd={onAdd}/>)}
                                                    
                     </MDBCardBody>
                 </MDBCol>
