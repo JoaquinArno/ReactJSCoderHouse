@@ -50,7 +50,7 @@ const Cart = () =>{
 
                         <Button className="boton" variant="secondary" active>Importe: ${total}</Button>
                         <Button className="boton" variant="danger" onClick={clear}>Vaciar Carrito</Button>
-                        <Button className="boton" variant="primary">Finalizar Compra</Button>
+                        <Button className="boton" variant="primary">Confirmar Compra</Button>
 
                     </>
                 )

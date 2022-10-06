@@ -1,9 +1,9 @@
 import React from "react";
 import ItemList from "./ItemList"
-import { products } from "../../Assets/Products"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { customFetchCategory } from "../../Utils/customFetch";
+import { db } from "../../Firebase/firebase";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 const ItemListContainer = ({greeting}) =>{
 
@@ -11,11 +11,29 @@ const ItemListContainer = ({greeting}) =>{
 
     const [listProducts, setListProducts] = useState([])
 
-  
     useEffect(() => {
-        customFetchCategory(products, 100, idCategoria).then((res) => setListProducts(res));
-    }, [idCategoria]);
 
+        const productsCollection = collection(db, 'Products');
+
+
+        if (idCategoria) {
+
+            const queryCategoria = query(productsCollection, where('categoria', '==', idCategoria))
+            getDocs(queryCategoria)
+            .then(res => setListProducts(res.docs.map(product => ({id: product.id, ...product.data()}))))
+
+        } else {
+
+            getDocs(productsCollection)
+            .then((data)=>{
+                const lista = data.docs.map((product)=>{
+                    return {...product.data(),id: product.id}
+                })
+    
+                setListProducts(lista)})
+        }
+        
+    }, [idCategoria]);
 
     return (
     

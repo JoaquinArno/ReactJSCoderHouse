@@ -1,9 +1,9 @@
 import React from "react";
 import ItemDetail from "./ItemDetail"
-import { customFetchDetail } from "../../Utils/customFetch";
 import { useState, useEffect } from "react";
-import { products } from "../../Assets/Products";
 import { useParams } from 'react-router-dom';
+import { db } from "../../Firebase/firebase";
+import { doc, getDoc, collection } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     
@@ -12,9 +12,14 @@ const ItemDetailContainer = () => {
     const { idProducto } = useParams();
 
     useEffect(() => {
-        customFetchDetail(products, 100, parseInt(idProducto)).then((res) => setProduct(res));
-    }, [idProducto]);
+        const productCollection = collection (db, 'Products');
+        const refDoc = doc(productCollection, idProducto)
+        getDoc(refDoc)
+        .then ((result)=>{
+            setProduct({ id: result.idProducto, ...result.data()})
+        })}, [idProducto]);
 
+        
     return (
 
         <>
