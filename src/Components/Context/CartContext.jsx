@@ -38,22 +38,22 @@ const addItem = (producto, cantidad) => {
 
 const removeItem = (id) => {
 
-    const borrarProducto = cart.filter((producto)=>{
-        return producto.id !== id;
-    })
+    const borrarProducto = cart.filter( producto => {
+        return producto.producto.id !== id;
+    });
 
-    setCart(borrarProducto)
+    setCart(borrarProducto);
     
 };
 
-const clear = () => {
+ const clear = () => {
 
     setCart([]);
 };
 
 return (
 
-    <CartContext.Provider value={{ addItem, removeItem, clear, cantidad, cart }}>
+    <CartContext.Provider value={{ addItem, removeItem, cantidad, cart, clear }}>
         {children}
     </CartContext.Provider>
 

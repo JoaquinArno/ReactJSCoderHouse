@@ -44,7 +44,7 @@ const ItemDetail = ({ product }) => {
                             <small className='text-muted'><span> Autor: </span>{product.autor}</small>
                             <small className='text-muted'><span> | Páginas: </span>{product.paginas}<br /></small>
                             <small className='text-muted'><span>Tapa: </span>{product.tapa}</small>
-                            <small className='text-muted'><span> | Páginas: </span>{product.paginas}</small>
+                            <small className='text-muted'><span> | Género: </span>{product.categoria}</small>
                         </MDBCardText>
 
                         <MDBCardText><span>${product.precio}</span></MDBCardText>
