@@ -51,9 +51,11 @@ const removeItem = (id) => {
     setCart([]);
 };
 
+const total = cart.reduce((acumulador, producto) => acumulador + producto.cantidad * producto.producto.precio, 0);
+
 return (
 
-    <CartContext.Provider value={{ addItem, removeItem, cantidad, cart, clear }}>
+    <CartContext.Provider value={{ addItem, removeItem, cantidad, cart, clear, total }}>
         {children}
     </CartContext.Provider>
 

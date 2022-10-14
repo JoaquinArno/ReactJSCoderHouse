@@ -51,7 +51,7 @@ const ItemDetail = ({ product }) => {
 
                         {click === 1 ? 
 
-                        (<Link to={'/Carrito'}><Button variant="primary">Finalizar Compra</Button></Link>)
+                        (<Link to={'/Carrito'}><Button variant="primary">Ir al Carrito</Button></Link>)
 
                         : (<ItemCount initial={1} stock={product.stock} onAdd={onAdd}/>)}
                                                    

@@ -7,11 +7,11 @@ import Button from 'react-bootstrap/Button';
 import "./Cart.css"
 
 
+
 const Cart = () =>{
 
-    const { cart, removeItem, clear } = useContext(CartContext);
+    const { cart, removeItem, clear, total } = useContext(CartContext);
 
-    const total = cart.reduce((acumulador, producto) => acumulador + producto.cantidad * producto.producto.precio, 0);
 
     return (
 
@@ -50,7 +50,7 @@ const Cart = () =>{
 
                         <Button className="boton" variant="secondary" active>Importe: ${total}</Button>
                         <Button className="boton" variant="danger" onClick={clear}>Vaciar Carrito</Button>
-                        <Button className="boton" variant="primary">Confirmar Compra</Button>
+                        <Link to={'/FinalizarCompra'}><Button className="botonCompra" variant="primary">Comprar</Button></Link>
 
                     </>
                 )
