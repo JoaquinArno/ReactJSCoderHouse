@@ -17,17 +17,17 @@ const CartForm = () => {
         addDoc(ventasCollection, {
     
             comprador: nombre,
-            Correo: email,
-            fecha: serverTimestamp(),
+            correo: email,
             items: cart,
+            fecha: serverTimestamp(),
             importe: total,
         })
     
-            .then(result => {
+        .then(result => {
     
-                console.log(result.id);
-                clear();
-            })
+            alert('Tu pedido ha sido realizado con Exito, el ID de tu compra es ' + result.id)
+            clear();
+        })
     }
 
 
@@ -52,45 +52,11 @@ const CartForm = () => {
               <Form.Control className="campo" type="email" placeholder="name@example.com" name="correo"/>
           </FloatingLabel>
 
-          <Button className="boton" variant="primary" type="submit">Confirmar Compra</Button>
+          <Button className="botonForm" variant="primary" type="submit">Confirmar Compra</Button>
     </form>
   );
 }
 
 export default CartForm;
-
-
-
- // const finalizarCompra =(nombre, email) =>{
-        
-    //     let itemsForDB = cart.map (producto => ({
-    //         id: producto.id,
-    //         titulo: producto.titulo,
-    //         autor: producto.autor,
-    //         precio: producto.precio,
-    //         cantidad: producto.cantidad,
-    //     }))
-    
-    //     let order ={
-    
-    //         comprador: nombre,
-    //         correo: email,
-    //         fecha: serverTimestamp(),
-    //         items: itemsForDB,
-    //         importe: total(),
-    //     }
-    
-    //     const createOrderInFirestore = async () =>{    
-        
-    //         const newOrderRef = doc(collection(db,"Ventas"))   
-    //         await setDoc(newOrderRef, order)
-    //         return newOrderRef
-    //     }
-        
-    //     createOrderInFirestore()
-    //         .then(result => alert('Tu pedido ha sido realizado con Exito, el ID de tu compra es ' + result.id))
-    //         .then (clear())
-    // } 
-
 
 
