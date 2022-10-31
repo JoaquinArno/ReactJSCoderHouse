@@ -1,6 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./Components/NavBar/NavBar";
+import Footer from "./Components/Footer/Footer";
 import ItemListContainer from "./Components/ItemList/ItemListContainer";
 import ItemDetailContainer from "./Components/ItemDetail/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,14 +20,15 @@ const App = () =>{
     
       <BrowserRouter>
       <CartProvider>
-      <NavBar product={ products }/>
+      <NavBar product={ products } greeting={bienvenida}/>
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting={bienvenida} />} />
+          <Route path='/' element={<ItemListContainer/>} />
           <Route path='/categoria/:idCategoria' element={<ItemListContainer greeting={bienvenida} />} />
           <Route path='/producto/:idProducto' element={<ItemDetailContainer />} />
           <Route path='/Carrito' element={<Cart />} />
           <Route path='/FinalizarCompra' element={<CartForm />} />
         </Routes>
+      <Footer />
       </CartProvider>
       </BrowserRouter>
 

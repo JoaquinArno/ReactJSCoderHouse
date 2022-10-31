@@ -23,17 +23,17 @@ useEffect (() => {
 const addItem = (producto, cantidad) => {
 
     const isInCart = cart.findIndex(productoCart => productoCart.producto.id === producto.id);
-
+ 
     if (isInCart !== -1) {
-
-        const newCart = cart.filter(producto => producto !== cart[isInCart])
-        setCart([{producto,cantidad}, ...newCart])
-
-    } else {
-
+ 
+        const newCart = cart.filter(producto => producto.id !== cart[isInCart])
+         setCart([{producto,cantidad}, ...newCart])
+ 
+     } else {
+ 
         setCart([...cart, {producto,cantidad}])
     }
-};
+ };
 
 
 const removeItem = (id) => {
@@ -62,5 +62,8 @@ return (
 )};
 
 export default CartProvider;
+
+
+
 
 

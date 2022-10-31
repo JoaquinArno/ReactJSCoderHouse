@@ -1,6 +1,23 @@
+.cardContainer {
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+
+}
+
+
+
 .card {
 
-    margin-left: 43%;
+    text-align:justify;
+    margin-left: 115%;
+}
+
+.spinner {
+
+    margin-left: 47%;
     margin-top: 5%;
+    margin-bottom: 15%;
 
 }

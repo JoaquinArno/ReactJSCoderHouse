@@ -3,6 +3,7 @@ import { CartContext } from "../Context/CartContext";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import swal from 'sweetalert';
 import { db } from "../../Firebase/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import "./CartForm.css"
@@ -22,10 +23,13 @@ const CartForm = () => {
             fecha: serverTimestamp(),
             importe: total,
         })
+
+        
     
         .then(result => {
-    
-            alert('Tu pedido ha sido realizado con Exito, el ID de tu compra es ' + result.id)
+
+            console.log(cart);
+            swal("¡Tu compra se ha confirmado con exito!", "el ID de tu compra es " + result.id, "success");
             clear();
         })
     }

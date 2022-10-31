@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../Firebase/firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
+import Spinner from 'react-bootstrap/Spinner';
+import "./Item.css"
 
-const ItemListContainer = ({greeting}) =>{
+const ItemListContainer = () =>{
 
     let { idCategoria } = useParams();
 
     const [listProducts, setListProducts] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
 
@@ -31,6 +34,7 @@ const ItemListContainer = ({greeting}) =>{
                 })
     
                 setListProducts(lista)})
+            .finally (()=>{setLoading(setLoading(false))})
         }
         
     }, [idCategoria]);
@@ -38,23 +42,15 @@ const ItemListContainer = ({greeting}) =>{
     return (
     
     <>
-        <h1 style={styles.saludo}>{greeting}</h1> 
-        <ItemList listProducts={listProducts}/>
+        { loading
+
+          ? <Spinner animation="border" variant="primary" className="spinner"/>
+          : <ItemList listProducts={listProducts}/>}
     </>
 
     )
 }
 
-const styles = {
 
-saludo: {
-
-    fontStyle: 'oblique',
-    fontSize: '24px',
-    paddingTop: '25px',
-    display: 'flex',
-    justifyContent: 'center',
-}
-}
 
 export default ItemListContainer;

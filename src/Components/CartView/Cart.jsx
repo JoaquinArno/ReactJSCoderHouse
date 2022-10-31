@@ -17,7 +17,7 @@ const Cart = () =>{
 
         <>
 
-            {cart.length === 0 ? (<h3>Tu carrito está vacío. Si queres agregar productos hace click<Link className="link" to='/'>aquí</Link>.</h3>)
+            {cart.length === 0 ? (<h3 style={{ marginBottom: '14%' }}>Tu carrito está vacío. Si queres agregar productos hace click<Link className="link" to='/'>aquí</Link>.</h3>)
 
                 : (
 
@@ -29,6 +29,9 @@ const Cart = () =>{
 
                                 <ListGroup className="container" key={producto.producto.id} as="ol">
                                     <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
+                                        <div className="ms-2 me-auto imgItem">
+                                            <img src={producto.producto.img} alt="img"/>
+                                        </div>
                                         <div className="ms-2 me-auto">
                                             <div className="fw-bold">
                                                 {producto.producto.titulo} 

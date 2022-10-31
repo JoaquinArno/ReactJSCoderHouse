@@ -13,7 +13,7 @@ const ItemDetail = ({ product }) => {
 
     const [click, setClick] = useState(0);
 
-    const onAdd = (contador) => {
+    const onAdd = (cantidad) => {
 
         setClick(1)
 
@@ -25,7 +25,7 @@ const ItemDetail = ({ product }) => {
             timer: 1500
         })
 
-        addItem(product,contador);
+        addItem(product,cantidad);
 
     }
 

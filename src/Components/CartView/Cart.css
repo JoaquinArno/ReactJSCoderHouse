@@ -1,7 +1,13 @@
 .container {
 
-    width: 60%;
+    width: 40%;
     padding-top: 2%;
+
+}
+
+img{
+
+width: 72px;
 
 }
 
@@ -23,7 +29,8 @@ margin-left: 20%;
 
  margin-top: 0.5%;
  width: 59.3%;
- margin-left: 17.1%;
+ margin-left: 19.25%;
+ margin-bottom: 2%;
 
 }
 
